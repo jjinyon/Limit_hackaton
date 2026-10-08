@@ -32,7 +32,7 @@ def processData(a, b, c, d, e, f):
             },
             "solution": {
                 "type": "string",
-                "description": "갈등의 해결방안을 제시합니다, / 1. 양측이 납득할 수 있는 해결책을 자세히 풀어 씁니다."
+                "description": "둘 사이 갈등의 해결방안을 제시합니다. / 1. 양측이 납득할 수 있는 해결책을 자세히 풀어 씁니다. 2. 행동의 주체는 남 녀 둘 뿐입니다."
             }
         },
         "required": [
@@ -44,12 +44,12 @@ def processData(a, b, c, d, e, f):
     if(c): #남자의 생각
         responseStructure["properties"]["maleFeelings"] = {}
         responseStructure["properties"]["maleFeelings"]["type"] = "string"
-        responseStructure["properties"]["maleFeelings"]["description"] = "남자가 어떤 감정을 느끼는지 자세히 그리고 객관적으로 묘사합니다."
+        responseStructure["properties"]["maleFeelings"]["description"] = "남자가 어떤 감정을 느끼는지 자세히 그리고 객관적으로 묘사합니다. 추측을 섞어도 됩니다."
         responseStructure["required"].append("maleFeelings")
     if(d): #여자의 생각
         responseStructure["properties"]["femaleFeelings"] = {}
         responseStructure["properties"]["femaleFeelings"]["type"] = "string"
-        responseStructure["properties"]["femaleFeelings"]["description"] = "여자가 어떤 감정을 느끼는지 자세히 그리고 객관적으로 묘사합니다."
+        responseStructure["properties"]["femaleFeelings"]["description"] = "여자가 어떤 감정을 느끼는지 자세히 그리고 객관적으로 묘사합니다. 추측을 섞어도 됩니다."
         responseStructure["required"].append("femaleFeelings")
 
     if(e): #타임라인
