@@ -1,6 +1,10 @@
 import streamlit as st
-
-st.title("# 이판사판")
+col1, col2 = st.columns([1, 2])
+with col1:
+    st.title("# 이판사판")
+    
+with col2:
+    st.image("intro.png", caption="")
 
 # 입력창
 input_1 = st.text_input("남성의 입장을 입력하세요:")
@@ -18,4 +22,3 @@ if st.button("이판사판 결과 확인"):
     else:
         st.warning("두 칸을 모두 입력해주세요.")
         
-st.image("icon.png", caption="")

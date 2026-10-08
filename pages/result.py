@@ -2,7 +2,13 @@ import streamlit as st
 import api
 import json
 
-st.title("진단")
+col1, col2 = st.columns([1, 2])
+with col1:
+    st.title("진단")
+    
+with col2:
+    st.image("char.png", caption="")
+
 
 if 'str_1' in st.session_state and 'str_2' in st.session_state:
     val1 = st.session_state['str_1']
