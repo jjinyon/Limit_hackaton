@@ -5,6 +5,7 @@ from dotenv import load_dotenv
 
 load_dotenv(override=True)
 
+
 model = "HCX-007"
 URL = f"https://limitai.43.202.27.129.sslip.io/v3/chat-completions/{model}"
 ClovaKey = os.getenv("ClovaKey")
@@ -109,4 +110,4 @@ if resp.status_code != 200:
     print("Error!")
 
 data = resp.json()
-print(data)
+
