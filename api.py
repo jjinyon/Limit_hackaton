@@ -16,11 +16,34 @@ headers = {
     "Accept": "application/json",
 }
 
-male_side = "여자친구와 논쟁을 하다가 여자친구가 씨발새끼야라고 욕하고 여친한테 빰을 맞았습니다"
-female_side = "남자친구가 너무 멍청합니다 밖에 나가면 개망신이 따로 없어요"
+summData = ""
+if(False): #카카오톡 대화기록 요약 / 테스트필요
+    kakaoRecord = ""
+    summModel = "HCX-DASH-002"
+    summURL = f"https://limitai.43.202.27.129.sslip.io/v3/chat-completions/{summModel}"
+    summPayload = {
+    "messages": [
+        {"role": "system", 
+         "content": [{"type": "text", 
+                      "text": "당신은 요약 AI 에이전트입니다. 입력받은 카카오톡 대화내역을 간략히 요약정리해서 출력합니다. 한 쌍 커플의 갈등상황에 초점을 둡니다."}]}, # AI 역할
+        {"role": "user", 
+         "content": [{"type": "text", "text": kakaoRecord}]}, # 입력
+    ],
+    "topP": 0.8,
+    "topK": 0,
+    "max_tokens": 1024,
+    "temperature": 0.5,
+    "repetitionPenalty": 1.1,
+    }
+    summResp = requests.post(URL, headers=headers, json=summPayload, timeout=60)
+    summData = summResp.json()["result"]["message"]["content"]
+
+
+male_side = "여자친구가 너무 좋아요"
+female_side = "남자친구랑 결혼할래요"
 context = "당신은 능력있는 커플심리상담가입니다. 현재 두 연인의 관계개선 상담을 하고 있습니다. 미리 정의한 json schema에 맞춰 응답합니다. 남자측 입장과 여자측 입자은 서로를 향한 편견과 오해가 있을 수 있음을 명심합니다."
 
-prompt = f"맥락은 다음과 같습니다. 남성측 : {male_side} / 여성측 : {female_side}."
+prompt = f"맥락은 다음과 같습니다. 남성측 : {male_side} / 여성측 : {female_side}. 둘의 카카오톡 대화 내역 요약본은 다음과 같습니다. {summData}"
 
 responseStructure = { #AI 응답 구조
     "type": "object",
@@ -39,7 +62,7 @@ responseStructure = { #AI 응답 구조
         },
         "solution": {
             "type": "string",
-            "description": "갈등의 해결방안을 제시합니다, / 양측이 납득할 수 있는 해결책을 자세히 풀어 씁니다."
+            "description": "갈등의 해결방안을 제시합니다, / 1. 양측이 납득할 수 있는 해결책을 자세히 풀어 씁니다."
         }
     },
     "required": [
