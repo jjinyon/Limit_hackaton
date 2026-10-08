@@ -7,7 +7,7 @@ input_1 = st.text_input("남성의 입장을 입력하세요:")
 input_2 = st.text_input("여성의 입장을 입력하세요:")
 
 # 실행 버튼
-if st.button("다음 페이지로 이동"):
+if st.button("이판사판 결과 확인"):
     if input_1 and input_2:
         # 1. 다음 페이지에서 쓸 수 있도록 session_state에 데이터 저장
         st.session_state['str_1'] = input_1

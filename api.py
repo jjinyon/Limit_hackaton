@@ -28,15 +28,15 @@ def processData(a, b):
         "properties": {
             "problem": {
                 "type": "string",
-                "description": "문제 명시 / 1.둘 사이에 문제가 무엇인지 묘사합니다 2.양측의 입장을 그대로 노출하지 않습니다."
+                "description": "문제 명시 / 1.둘 사이 관계에 문제가 무엇인지 자세히 묘사합니다 2.양측의 입장을 그대로 노출하지 않습니다."
             },
             "maleFeelings": {
                 "type": "string",
-                "description": "남자 측 감정 전달 / 1. 남자가 어떤 감정을 느끼는지 묘사합니다."
+                "description": "남자 측 감정 전달 / 1. 남자가 어떤 감정을 느끼는지 자세히 그리고 객관적으로 묘사합니다."
             },
             "femaleFeelings": {
                 "type": "string",
-                "description": "여자 측 감정 전달 / 1. 여자가 어떤 감정을 느끼는지 묘사합니다.",
+                "description": "여자 측 감정 전달 / 1. 여자가 어떤 감정을 느끼는지 자세히 그리고 객관적으로 묘사합니다.",
             },
             "solution": {
                 "type": "string",
