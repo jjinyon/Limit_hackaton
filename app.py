@@ -1,29 +1,42 @@
 import streamlit as st
+
+st.set_page_config(page_title="#이판사판", layout="centered")
 st.markdown(
-"""
-<style>
-    :root {
-        --primary-bg: linear-gradient(45deg, #f0f8ff, #e6f3ff);
-        --text-color: #2d3436;
+    """
+    <style>
+    /* 전체 앱 배경 설정 */
+    .stApp {
+        background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+        background-size: 400% 400%;
+        animation: gradient 15s ease infinite;
     }
 
-    .stApp {
+    /* 메인 콘텐츠 영역을 투명하거나 보기 좋게 조정 */
+    .block-container {
+        background-color: rgba(255, 255, 255, 0.6); /* 반투명 흰색 배경으로 가독성 확보 */
+        padding: 3rem;
+        border-radius: 20px;
+        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+        backdrop-filter: blur(5px); /* 배경 흐림 효과 */
+    }
 
-        background-image: var(--primary-bg);
-        
-        padding: 20px;
-        border-radius: 15px;
-        box-shadow: 0 10px 30px rgba(255,255,255,0.3);
-        min-height: 100vh;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        
+    /* 그라데이션이 움직이는 애니메이션 정의 */
+    @keyframes gradient {
+        0% {
+            background-position: 0% 50%;
+        }
+        50% {
+            background-position: 100% 50%;
+        }
+        100% {
+            background-position: 0% 50%;
+        }
     }
     </style>
     """,
-    unsafe_allow_html=True,
+    unsafe_allow_html=True
 )
+
 col1, col2 = st.columns([1, 2])
 with col1:
     st.title("# 이판사판")
