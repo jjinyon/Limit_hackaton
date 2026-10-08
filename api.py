@@ -5,7 +5,7 @@ from dotenv import load_dotenv
 
 load_dotenv(override=True)
 
-def processData(a, b):
+def processData(a, b, c, d, e, f):
     model = "HCX-007"
     URL = f"https://limitai.43.202.27.129.sslip.io/v3/chat-completions/{model}"
     ClovaKey = os.getenv("ClovaKey")
@@ -30,14 +30,6 @@ def processData(a, b):
                 "type": "string",
                 "description": "문제 명시 / 1.둘 사이 관계에 문제가 무엇인지 자세히 묘사합니다 2.양측의 입장을 그대로 노출하지 않습니다."
             },
-            "maleFeelings": {
-                "type": "string",
-                "description": "남자 측 감정 전달 / 1. 남자가 어떤 감정을 느끼는지 자세히 그리고 객관적으로 묘사합니다."
-            },
-            "femaleFeelings": {
-                "type": "string",
-                "description": "여자 측 감정 전달 / 1. 여자가 어떤 감정을 느끼는지 자세히 그리고 객관적으로 묘사합니다.",
-            },
             "solution": {
                 "type": "string",
                 "description": "갈등의 해결방안을 제시합니다, / 1. 양측이 납득할 수 있는 해결책을 자세히 풀어 씁니다."
@@ -45,21 +37,33 @@ def processData(a, b):
         },
         "required": [
             "problem",
-            "maleFeelings",
-            "femaleFeelings"
             "solution"
         ]
     }
 
-    if(True): #잘잘못따지기 / 임시
+    if(c): #남자의 생각
+        responseStructure["properties"]["maleFeelings"] = {}
+        responseStructure["properties"]["maleFeelings"]["type"] = "string"
+        responseStructure["properties"]["maleFeelings"]["description"] = "남자가 어떤 감정을 느끼는지 자세히 그리고 객관적으로 묘사합니다."
+        responseStructure["required"].append("maleFeelings")
+    if(d): #여자의 생각
+        responseStructure["properties"]["femaleFeelings"] = {}
+        responseStructure["properties"]["femaleFeelings"]["type"] = "string"
+        responseStructure["properties"]["femaleFeelings"]["description"] = "여자가 어떤 감정을 느끼는지 자세히 그리고 객관적으로 묘사합니다."
+        responseStructure["required"].append("femaleFeelings")
+
+    if(e): #타임라인
+        responseStructure["properties"]["recap"] = {}
+        responseStructure["properties"]["recap"]["type"] = "string"
+        responseStructure["properties"]["recap"]["description"] = "관계가 잘못된 지점을 단계별로 자세히 표시합니다. / 1번 2번처럼 시간순으로 번호를 매겨 나타냅니다. 번호가 바뀔 때 마다 줄바꿈합니다."
+        responseStructure["required"].append("recap")
+
+    if(f): #과실비율
         responseStructure["properties"]["ratio"] = {}
         responseStructure["properties"]["ratio"]["type"] = "string"
         responseStructure["properties"]["ratio"]["description"] = "남자와 여자의 잘못 비율을 객관적으로 나타냅니다. / 남자:xx , 여자:xx 형태로 나타냅니다."
         responseStructure["required"].append("ratio")
-        responseStructure["properties"]["recap"] = {}
-        responseStructure["properties"]["recap"]["type"] = "string"
-        responseStructure["properties"]["recap"]["description"] = "관계가 잘못된 지점을 단계별로 자세히 표시합니다. / 1번 2번처럼 시간순으로 번호를 매겨 나타냅니다."
-        responseStructure["required"].append("recap")
+
 
     payload = {
         "messages": [
