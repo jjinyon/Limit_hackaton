@@ -1,22 +1,19 @@
-# main.py
 import streamlit as st
-import api  # api.py에서 함수 가져오기
 
 st.title("이판사판")
 
-# 사용자로부터 스트링 두 개 입력받기
-input_1 = st.text_input("남자의 입장을 입력하세요:")
-input_2 = st.text_input("여자의 입장를 입력하세요:")
+# 입력창
+input_1 = st.text_input("남성의 입장을 입력하세요:")
+input_2 = st.text_input("여성의 입장을 입력하세요:")
 
-# 버튼을 누르면 실행
-if st.button("실행하기"):
+# 실행 버튼
+if st.button("다음 페이지로 이동"):
     if input_1 and input_2:
-        # api.py의 함수로 값 전달 후 딕셔너리 반환받기
-        api.male_side = input_1
-        api.female_side = input_2
+        # 1. 다음 페이지에서 쓸 수 있도록 session_state에 데이터 저장
+        st.session_state['str_1'] = input_1
+        st.session_state['str_2'] = input_2
         
-        # 반환받은 딕셔너리를 화면에 출력
-        st.write("결과:")
-        st.json(api.data)
+        # 2. 결과 페이지로 화면 전환
+        st.switch_page("pages/result.py")
     else:
         st.warning("두 칸을 모두 입력해주세요.")
