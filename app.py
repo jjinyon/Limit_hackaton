@@ -1,6 +1,6 @@
 import streamlit as st
 
-st.title("이판사판")
+st.title("# 이판사판")
 
 # 입력창
 input_1 = st.text_input("남성의 입장을 입력하세요:")

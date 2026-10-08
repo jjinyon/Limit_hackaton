@@ -14,16 +14,16 @@ if 'str_1' in st.session_state and 'str_2' in st.session_state:
     solution = result["solution"]
     recap = result["recap"]
 
-    st.write("문제점:")
-    st.markdown("**"+problem+"**")
-    st.write("타임라인:")
-    st.write(recap)
-    st.write("남자가 느낀 점:")
-    st.write(maleFeelings)
-    st.write("여자가 느낀 점:")
-    st.write(femaleFeelings)
-    st.write("해결방법:")
-    st.write(solution)
+    st.write("### 문제점:")
+    st.write("## **"+problem+"**")
+    st.write("### 타임라인:")
+    st.write("*"+recap+"*")
+    st.write("### 남자가 느낀 점:")
+    st.write("## **"+maleFeelings+"**")
+    st.write("### 여자가 느낀 점:")
+    st.write("## **"+femaleFeelings+"**")
+    st.write("### 해결방법:")
+    st.write("## **"+solution+"**")
     
 else:
     st.error("입력된 이야기가 없습니다. 메인 페이지에서 다시 진행해주세요.")
