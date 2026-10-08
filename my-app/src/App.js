@@ -1,20 +1,16 @@
 import React from 'react';
-import './App.css';
-import TextInput from './components/TextInput';
+import MultiTextInput from './components/MultiTextInput';
 
 function App() {
-  const handleTextSubmit = (text) => {
-    console.log("Parent received:", text);
-    // 여기에 원하는 동작을 추가하세요. 예를 들어, 서버에 전송 등.
+  const handleTextSubmit = (combinedText) => {
+    console.log("Combined Text:", combinedText); // 결합된 텍스트 콘솔 출력
   };
 
   return (
     <div className="App">
       <header className="App-header">
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <TextInput onSubmit={handleTextSubmit} />
+        <p>두 개의 입력창 예제</p>
+        <MultiTextInput onSubmit={handleTextSubmit} />
       </header>
     </div>
   );
