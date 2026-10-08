@@ -1,4 +1,29 @@
 import streamlit as st
+st.markdown(
+"""
+<style>
+    :root {
+        --primary-bg: linear-gradient(45deg, #f0f8ff, #e6f3ff);
+        --text-color: #2d3436;
+    }
+
+    .stApp {
+
+        background-image: var(--primary-bg);
+        
+        padding: 20px;
+        border-radius: 15px;
+        box-shadow: 0 10px 30px rgba(255,255,255,0.3);
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        
+    }
+    </style>
+    """,
+    unsafe_allow_html=True,
+)
 col1, col2 = st.columns([1, 2])
 with col1:
     st.title("# 이판사판")
