@@ -17,3 +17,5 @@ if st.button("이판사판 결과 확인"):
         st.switch_page("pages/result.py")
     else:
         st.warning("두 칸을 모두 입력해주세요.")
+        
+st.image("icon.png", caption="")
