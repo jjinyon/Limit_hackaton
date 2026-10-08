@@ -2,7 +2,7 @@
 import streamlit as st
 import api  # api.py에서 함수 가져오기
 
-st.title("초간단 파이썬 웹 앱")
+st.title("이판사판")
 
 # 사용자로부터 스트링 두 개 입력받기
 input_1 = st.text_input("남자의 입장을 입력하세요:")
