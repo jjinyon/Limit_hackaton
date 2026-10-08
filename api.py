@@ -16,13 +16,13 @@ headers = {
     "Accept": "application/json",
 }
 
-male_side = "여친한테 빰을 맞았습니다"
-female_side = "남자친구가 너무 멍청합니다"
+male_side = "여자친구와 논쟁을 하다가 여친한테 빰을 맞았습니다"
+female_side = "남자친구가 너무 멍청합니다 밖에 나가면 망신이 따로 없어요"
 context = "당신은 능력있는 커플심리상담가입니다. 현재 두 연인의 관계개선 상담을 하고 있습니다. 미리 정의한 json schema에 맞춰 응답합니다. 남자측 입장과 여자측 입자은 서로를 향한 편견과 오해가 있을 수 있음을 명심합니다."
 
 prompt = f"맥락은 다음과 같습니다. 남성측 : {male_side} / 여성측 : {female_side}."
 
-responseStructure = {
+responseStructure = { #AI 응답 구조
     "type": "object",
     "properties": {
         "problem": {
@@ -44,6 +44,16 @@ responseStructure = {
         "femaleFeelings"
     ]
 }
+
+if(True): #잘잘못따지기 / 임시
+    responseStructure["properties"]["ratio"] = {}
+    responseStructure["properties"]["ratio"]["type"] = "string"
+    responseStructure["properties"]["ratio"]["description"] = "남자와 여자의 잘못 비율을 객관적으로 나타냅니다. / (남자비율) : (여자비율) 형태로 나타냅니다."
+    responseStructure["required"].append("ratio")
+    responseStructure["properties"]["recap"] = {}
+    responseStructure["properties"]["recap"]["type"] = "string"
+    responseStructure["properties"]["recap"]["description"] = "관계가 잘못된 지점을 단계별로 표시합니다. / 1번 2번처럼 시간순으로 번호를 매겨 나타냅니다."
+    responseStructure["required"].append("recap")
 
 payload = {
     "messages": [
