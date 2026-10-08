@@ -36,12 +36,17 @@ responseStructure = { #AI 응답 구조
         "femaleFeelings": {
             "type": "string",
             "description": "여자 측 감정 전달 / 1. 여자가 어떤 감정을 느끼는지 묘사합니다.",
+        },
+        "solution": {
+            "type": "string",
+            "description": "갈등의 해결방안을 제시합니다, / 양측이 납득할 수 있는 해결책을 자세히 풀어 씁니다."
         }
     },
     "required": [
         "problem",
         "maleFeelings",
         "femaleFeelings"
+        "solution"
     ]
 }
 
@@ -66,7 +71,7 @@ payload = {
     "thinking": {"effort": "none"}, #추론 정도 none으로 고정
     "topP": 0.8,
     "topK": 0,
-    "max_tokens": 32768,
+    "max_tokens": 16384,
     "temperature": 0.5,
     "repetitionPenalty": 1.1,
     "responseFormat" : {
