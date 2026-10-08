@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import MultiTextInput from './components/MultiTextInput';
+import axios from 'axios';
+import { REACT_APP_API_ENDPOINT, REACT_APP_ACCESS_TOKEN } from './config';
 
 function App() {
   const [maleSide, setMaleSide] = useState('');
@@ -27,16 +29,10 @@ function App() {
               }
             ]
           },
-         ... // 나머지 시스템 메시지 및 사용자 메시지 객체 추가 필요
-         {
-             role: 'assistant',
-             content: [
-               {
-                 type: 'text',
-                 text: '상담 내용에 대한 응답을 준비 중입니다.'
-               }
-             ]
-           }
+          {
+            role: 'assistant',
+            content: [] // 여기에 어시스턴트 메시지 객체를 추가할 수 있습니다.
+          }
         ],
         temperature: 0.5, // 온도 설정
         max_tokens: 1024, // 최대 토큰 수
@@ -46,9 +42,9 @@ function App() {
       };
 
       // API 호출 (axios 사용 예시)
-      const response = await axios.post('YOUR_API_ENDPOINT', clovaRequestPayload, {
+      const response = await axios.post(REACT_APP_API_ENDPOINT, clovaRequestPayload, {
         headers: {
-          Authorization: `Bearer YOUR_ACCESS_TOKEN`,
+          Authorization: `Bearer ${REACT_APP_ACCESS_TOKEN}`,
           'X-NCP-CLOVASTUDIO-REQUEST-ID': Math.random().toString()
         }
       });
