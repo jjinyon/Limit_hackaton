@@ -41,7 +41,7 @@ if 'str_1' in st.session_state and 'str_2' in st.session_state:
     if(val6): #과실비율
         ratio = result["ratio"]
         st.write("##### AI가 생각한 과실비율:")
-        st.write("####### "+ ratio)
+        st.write(ratio)
 
     
     
