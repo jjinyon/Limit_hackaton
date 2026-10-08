@@ -16,14 +16,18 @@ headers = {
     "Accept": "application/json",
 }
 
+context = "당신은 능력있는 커플심리상담가입니다. 현재 두 연인의 관계개선 상담을 하고 있습니다. 맥락은 다음과 같습니다."
+prompt = ""
+
 payload = {
     "messages": [
         {"role": "system", 
-         "content": [{"type": "text", "text": "당신은 도우미입니다."}]}, # AI 역할
+         "content": [{"type": "text", 
+                      "text": role}]}, # AI 역할
         {"role": "user", 
-         "content": [{"type": "text", "text": "안녕하세요"}]}, # 입력
+         "content": [{"type": "text", "text": response}]}, # 입력
     ],
-    "thinking": {"effort": "low"},
+    "thinking": {"effort": "medium"},
     "topP": 0.8,
     "topK": 0,
     "temperature": 0.5,
